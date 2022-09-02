@@ -35,7 +35,16 @@
 .group-selection-participant {
     width: fit-content;
     background-color: white;
+    border: 1px solid #008080;
+    border-radius: 5px;
+    font-size: 18px;
     margin-top: 18px;
+    padding: 5px;
+}
+
+.group-selection-delete-icon {
+    display: inline-flex;
+    vertical-align: top;
 }
 
 #group-selection-add-button {

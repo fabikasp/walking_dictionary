@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Participant } from "./Participant";
 import "./GroupSelection.css";
  
 export const GroupSelection = () => {
@@ -30,7 +31,7 @@ export const GroupSelection = () => {
         <p id="group-selection-headline">Teilnehmer hinzufügen</p>
         <input id="group-selection-input" type="text" placeholder="Teilnehmer" value={currentParticipant} onChange={event => setCurrentParticipant(event.target.value)} />
         <div id="group-selection-participants">
-          {participants.map((participant, index) => <div key={index} className="group-selection-participant">{participant}</div>)}
+          {participants.map((participant, index) => <Participant key={index} participant={participant} />)}
         </div>
         <button id="group-selection-add-button" onClick={addParticipant}>Hinzufügen</button>
         <button id="group-selection-continue-button" onClick={() => navigate("/letter-selection")}>Fortfahren</button>
