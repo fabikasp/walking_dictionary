@@ -1,0 +1,51 @@
+#group-selection {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#group-selection-body {
+    text-align: center;
+    justify-content: center;
+}
+
+#group-selection-headline {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#group-selection-input {
+    font-family: "Copperplate Gothic Light";
+    font-size: 25px;
+    text-align: center;
+    border-color: #008080;
+    outline-color: #008080;
+    width: 90%;
+    padding: 5px;
+}
+
+#group-selection-participants {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-selection-participant {
+    width: fit-content;
+    background-color: white;
+    margin-top: 18px;
+}
+
+#group-selection-add-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
+#group-selection-continue-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}

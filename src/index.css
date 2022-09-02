@@ -11,36 +11,12 @@ html, body {
     }
 }
 
-#app {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#app-body {
-    width: fit-content;
-    text-align: center;
-}
-
-#app-headline {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-#app-description {
-    font-size: 20px;
-}
-
-#app-start-button {
+button {
     font-family: "Copperplate Gothic Light";
-    font-size: 25px;
     font-weight: bold;
     background-color: #E0FFFF;
-    border-color: #E0FFFF;
-    outline-color: #E0FFFF;
-    width: 90%;
-    margin-top: 18px;
+    border-color: #008080;
+    outline-color: #008080;
     padding: 8px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
