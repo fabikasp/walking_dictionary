@@ -1,7 +1,7 @@
 {
   "name": "walking_dictionary",
   "version": "1.0.0",
-  "description": "",
+  "description": "Website zum spielerischen Finden von Wörtern mit einem gewissen Anfangsbuchstaben.",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
@@ -17,7 +17,8 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
