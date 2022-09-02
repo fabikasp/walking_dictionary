@@ -1,9 +1,25 @@
-body {
+html, body {
     background-color: #E0FFFF;
     font-family: "Rockwell";
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (min-width: 576px) {
+    #root {
+        height: 100%;
+    }
 }
 
 #app {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app-body {
+    width: fit-content;
     text-align: center;
 }
 
@@ -20,7 +36,7 @@ body {
     font-size: 20px;
     font-weight: bold;
     background-color: #AFEEEE;
-    width: 40%;
+    width: 90%;
     margin-top: 18px;
     padding: 8px;
     border-radius: 10px;
