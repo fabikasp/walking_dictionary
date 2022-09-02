@@ -1,0 +1,27 @@
+body {
+    background-color: #E0FFFF;
+    font-family: "Rockwell";
+}
+
+#app {
+    text-align: center;
+}
+
+#app-headline {
+    font-size: 32px;
+}
+
+#app-description {
+    font-size: 20px;
+    font-style: italic;
+}
+
+#app-start-button {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #AFEEEE;
+    width: 40%;
+    margin-top: 18px;
+    padding: 8px;
+    border-radius: 10px;
+}
