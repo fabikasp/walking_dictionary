@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameProps } from "./types";
+import { MdPause, MdPlayArrow } from "react-icons/md";
 import "./Game.css";
 
 export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
@@ -8,6 +9,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   const [words, setWords] = useState<string[]>([]);
   const [currentWord, setCurrentWord] = useState("");
   const [seconds, setSeconds] = useState(0);
+  const [timerActive, setTimerActive] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -23,9 +25,15 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
 
   useEffect(() => {
     if (timer != null) {
-      const interval = setInterval(() => {
-        setSeconds(seconds => seconds - 1);
-      }, 1000);
+      let interval: number | undefined = undefined;
+
+      if (timerActive) {
+        interval = setInterval(() => {
+          setSeconds(seconds => seconds - 1);
+        }, 1000);
+      } else if (!timerActive && seconds != 0) {
+        clearInterval(interval);
+      }
 
       if (seconds <= 0) {
         setSeconds(timer);
@@ -39,7 +47,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   
       return () => clearInterval(interval);
     }
-  }, [seconds]);
+  }, [seconds, timerActive]);
 
   const validateAndSetCurrentWord = (word: string) => {
     const wordRegex = /^$|[a-zA-Z]/g;
@@ -89,6 +97,10 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
     navigate("/group-selection");
   };
 
+  const timerIcon = timerActive
+    ? <MdPause id="game-pause-icon" onClick={() => setTimerActive(false)} />
+    : <MdPlayArrow id="game-play-icon" onClick={() => setTimerActive(true)} />;
+
   return (
     <div id="game">
       <div id="game-body">
@@ -96,7 +108,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
         <div className="game-headline">Anfangsbuchstaben {letter}</div>
         <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
         <div id="game-current-participant-headline">du bist dran!</div>
-        {timer != null && <div id="game-timer">{seconds}</div>}
+        {timer != null && <div id="game-timer">{timerIcon} {seconds}</div>}
         <input id="game-word-input" type="text" placeholder="Wort" value={currentWord} onChange={event => validateAndSetCurrentWord(event.target.value)} />
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>

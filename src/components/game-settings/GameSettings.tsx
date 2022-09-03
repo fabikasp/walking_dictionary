@@ -60,7 +60,7 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
           {letterGroups.map((letterGroup: string[], index: number) => <LetterContainer key={index} letters={letterGroup} selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} />)}
         </div>
         <button id="game-settings-letter-random-button" onClick={selectRandomLetter}>Zufällig</button>
-        <div id="game-settings-timer-headline">Timer</div>
+        <div id="game-settings-timer-headline">Timer (optional)</div>
         <input id="game-settings-timer-input" type="text" placeholder="Timer in sec" value={timer ?? ""} onChange={event => validateAndSetTimer(event.target.value)} />
         <div id="game-settings-verify-word-headline">Existenzprüfung von Wörtern</div>
         <div id="game-settings-verify-words-checkbox-container">

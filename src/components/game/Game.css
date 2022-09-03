@@ -54,8 +54,19 @@
     margin-top: 18px;
 }
 
+#game-stop-timer-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
 #game-restart-button {
     width: 90%;
     font-size: 18px;
     margin-top: 18px;
+}
+
+#game-pause-icon, #game-play-icon {
+    display: inline-flex;
+    vertical-align: top;
 }
