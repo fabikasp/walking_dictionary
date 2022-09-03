@@ -5,9 +5,9 @@ import { MdPause, MdPlayArrow } from "react-icons/md";
 import { Word } from "./Word";
 import "./Game.css";
 
-export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
+export const Game = ({letter, participants, timer, resetGame, verifyWords, availableWords}: GameProps) => {
   const [currentParticipantIndex, setCurrentParticipantIndex] = useState(0);
-  const [words, setWords] = useState<string[]>([]);
+  const [mentionedWords, setMentionedWords] = useState<string[]>([]);
   const [currentWord, setCurrentWord] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(true);
@@ -59,20 +59,28 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   };
 
   const handleSubmit = () => {
-    if (currentWord.length <= 1) {
+    const lowerCaseWord = currentWord.toLowerCase();
+
+    if (lowerCaseWord.length <= 1) {
       setErrorMessage("Mindestens zwei Buchstaben notwendig");
 
       return;
     }
 
-    if (currentWord.charAt(0).toLowerCase() != letter.toLowerCase()) {
+    if (lowerCaseWord.charAt(0) != letter.toLowerCase()) {
       setErrorMessage("Wort muss mit " + letter + " anfangen");
 
       return;
     }
 
-    if (words.includes(currentWord.toLowerCase())) {
+    if (mentionedWords.includes(lowerCaseWord)) {
       setErrorMessage("Wort wurde bereits genannt");
+
+      return;
+    }
+
+    if (verifyWords && !availableWords.includes(lowerCaseWord)) {
+      setErrorMessage("Wort wurde nicht gefunden");
 
       return;
     }
@@ -90,7 +98,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
       setCurrentParticipantIndex(0);
     }
 
-    setWords([...words, currentWord.toLowerCase()]);
+    setMentionedWords([...mentionedWords, lowerCaseWord]);
   };
 
   const handleKeyDown = (event: any) => {
@@ -129,7 +137,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
         <button id="game-words-button" onClick={() => setShowWords(!showWords)}>Wörter {showWords ? "ausblenden" : "anzeigen"}</button>
         <div id="game-words">
-          {showWords && words.map((word: string, index: number) => <Word key={index} word={word} />)}
+          {showWords && mentionedWords.map((word: string, index: number) => <Word key={index} word={word} />)}
         </div>
         <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
       </div>

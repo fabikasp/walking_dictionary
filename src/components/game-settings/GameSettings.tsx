@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { letters } from "./types";
+import { LETTERS } from "./types";
 import { LetterContainer } from "./LetterContainer";
 import { GameSettingsProps } from "./types";
 import "./GameSettings.css";
@@ -16,13 +16,13 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
   }, []);
 
   let j = -1; /* partition the letters for view */
-  for (let i = 0; i < letters.length; i++) {
+  for (let i = 0; i < LETTERS.length; i++) {
     if (i % 6 == 0) {
       j++;
       letterGroups.push([]);
     }
 
-    letterGroups[j].push(letters[i]);
+    letterGroups[j].push(LETTERS[i]);
   }
 
   const selectRandomLetter = () => {
@@ -30,7 +30,7 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
     const max = 29;
     const randomLetterIndex = Math.floor(Math.random() * (max - min + 1) + min);
 
-    setSelectedLetter(letters[randomLetterIndex]);
+    setSelectedLetter(LETTERS[randomLetterIndex]);
   };
 
   const validateAndSetTimer = (timer: string) => {

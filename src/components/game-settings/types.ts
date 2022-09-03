@@ -1,4 +1,4 @@
-export const letters: string[] = [
+export const LETTERS: string[] = [
     "A",
     "B",
     "C",

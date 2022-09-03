@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { GroupSelection } from "./group-selection/GroupSelection";
 import { GameSettings } from "./game-settings/GameSettings";
 import { Game } from "./game/Game";
+import { GERMAN_WORDS } from "./types";
 import "./App.css";
  
 export const App = () => {
@@ -11,6 +12,12 @@ export const App = () => {
   const [selectedLetter, setSelectedLetter] = useState("A");
   const [timer, setTimer] = useState<number | null>(null);
   const [verifyWords, setVerifyWords] = useState(true);
+  const [availableWords, setAvailableWords] = useState<string[]>([]);
+
+  useEffect(() => {
+    const lowerCaseGermanWords = GERMAN_WORDS.filter((germanWord: string) => germanWord.toLowerCase());
+    setAvailableWords(lowerCaseGermanWords);
+  }, []);
 
   const addParticipant = (participant: string) => {
     setParticipants([...participants, participant]);
@@ -42,7 +49,14 @@ export const App = () => {
               setVerifyWords={setVerifyWords} 
               participants={participants} 
             />} />
-            <Route path="game" element={<Game letter={selectedLetter} participants={participants} timer={timer} resetGame={resetGame} />} />
+            <Route path="game" element={<Game 
+              letter={selectedLetter} 
+              participants={participants} 
+              timer={timer} 
+              resetGame={resetGame} 
+              verifyWords={verifyWords} 
+              availableWords={availableWords} 
+            />} />
         </Routes>
     </BrowserRouter>
   );
