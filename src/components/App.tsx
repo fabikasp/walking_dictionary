@@ -42,7 +42,7 @@ export const App = () => {
               setVerifyWords={setVerifyWords} 
               participants={participants} 
             />} />
-            <Route path="game" element={<Game letter={selectedLetter} participants={participants} timer={1000} resetGame={resetGame} />} />
+            <Route path="game" element={<Game letter={selectedLetter} participants={participants} timer={timer} resetGame={resetGame} />} />
         </Routes>
     </BrowserRouter>
   );

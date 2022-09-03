@@ -4,3 +4,7 @@ export type GameProps = {
     timer: number | null,
     resetGame: () => void
 };
+
+export type WordProps = {
+    word: string
+};

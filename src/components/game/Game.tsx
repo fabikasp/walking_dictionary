@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameProps } from "./types";
 import { MdPause, MdPlayArrow } from "react-icons/md";
+import { Word } from "./Word";
 import "./Game.css";
 
 export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
@@ -10,6 +11,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   const [currentWord, setCurrentWord] = useState("");
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(true);
+  const [showWords, setShowWords] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -63,7 +65,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
       return;
     }
 
-    if (currentWord.charAt(0) != letter) {
+    if (currentWord.charAt(0).toLowerCase() != letter.toLowerCase()) {
       setErrorMessage("Wort muss mit " + letter + " anfangen");
 
       return;
@@ -109,10 +111,13 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
         <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
         <div id="game-current-participant-headline">du bist dran!</div>
         {timer != null && <div id="game-timer">{timerIcon} {seconds}</div>}
-        <input id="game-word-input" type="text" placeholder="Wort" value={currentWord} onChange={event => validateAndSetCurrentWord(event.target.value)} />
+        <input id="game-word-input" type="text" placeholder="Wort" value={currentWord} onChange={event => validateAndSetCurrentWord(event.target.value)} ref={input => input && input.focus()} />
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
-        <button id="game-words-button">Genannte Wörter</button>
+        <button id="game-words-button" onClick={() => setShowWords(!showWords)}>Wörter {showWords ? "ausblenden" : "anzeigen"}</button>
+        <div id="game-words">
+          {showWords && words.map((word: string) => <Word word={word} />)}
+        </div>
         <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
       </div>
     </div>

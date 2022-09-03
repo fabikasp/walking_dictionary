@@ -41,7 +41,7 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
     <div id="group-selection">
       <div id="group-selection-body">
         <p id="group-selection-headline">Teilnehmer festlegen</p>
-        <input id="group-selection-input" type="text" placeholder="Teilnehmer" value={currentParticipant} onChange={event => setCurrentParticipant(event.target.value)} />
+        <input id="group-selection-input" type="text" placeholder="Teilnehmer" value={currentParticipant} onChange={event => setCurrentParticipant(event.target.value)} ref={input => input && input.focus()} />
         <div id="group-selection-error">{errorMessage}</div>
         <div id="group-selection-participants">
           {participants.map((participant, index) => <Participant key={index} participant={participant} deleteParticipant={() => deleteParticipant(index)} />)}

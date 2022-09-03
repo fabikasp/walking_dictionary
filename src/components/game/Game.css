@@ -44,29 +44,44 @@
 
 #game-submit-button {
     width: 90%;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 18px;
 }
 
 #game-words-button {
     width: 90%;
-    font-size: 18px;
-    margin-top: 18px;
-}
-
-#game-stop-timer-button {
-    width: 90%;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 18px;
 }
 
 #game-restart-button {
     width: 90%;
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 18px;
 }
 
 #game-pause-icon, #game-play-icon {
     display: inline-flex;
     vertical-align: top;
+}
+
+#game-words-modal {
+    width: 80%;
+}
+
+#game-words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-word {
+    width: fit-content;
+    background-color: white;
+    border: 1px solid #008080;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 6px;
+    padding: 5px;
 }
