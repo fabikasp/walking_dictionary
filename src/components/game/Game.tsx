@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { GameProps } from "./types";
 import "./Game.css";
 
-export const Game = ({letter, participants, timer}: GameProps) => {
+export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   const [currentParticipantIndex, setCurrentParticipantIndex] = useState(0);
   const [words, setWords] = useState<string[]>([]);
   const [currentWord, setCurrentWord] = useState("");
@@ -55,6 +55,12 @@ export const Game = ({letter, participants, timer}: GameProps) => {
       return;
     }
 
+    if (currentWord.charAt(0) != letter) {
+      setErrorMessage("Wort muss mit " + letter + " anfangen");
+
+      return;
+    }
+
     if (words.includes(currentWord.toLowerCase())) {
       setErrorMessage("Wort wurde bereits genannt");
 
@@ -77,6 +83,12 @@ export const Game = ({letter, participants, timer}: GameProps) => {
     setWords([...words, currentWord.toLowerCase()]);
   };
 
+  const handleRestart = () => {
+    resetGame();
+
+    navigate("/group-selection");
+  };
+
   return (
     <div id="game">
       <div id="game-body">
@@ -89,7 +101,7 @@ export const Game = ({letter, participants, timer}: GameProps) => {
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
         <button id="game-words-button">Genannte Wörter</button>
-        <button id="game-restart-button">Neustart</button>
+        <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
       </div>
     </div>
   );

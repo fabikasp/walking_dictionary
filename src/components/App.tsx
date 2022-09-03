@@ -22,6 +22,12 @@ export const App = () => {
     );
   };
 
+  const resetGame = () => {
+    setSelectedLetter("A");
+    setTimer(null);
+    setVerifyWords(true);
+  };
+
   return (
     <BrowserRouter>
         <Routes>
@@ -36,7 +42,7 @@ export const App = () => {
               setVerifyWords={setVerifyWords} 
               participants={participants} 
             />} />
-            <Route path="game" element={<Game letter={selectedLetter} participants={participants} timer={timer} />} />
+            <Route path="game" element={<Game letter={selectedLetter} participants={participants} timer={timer} resetGame={resetGame} />} />
         </Routes>
     </BrowserRouter>
   );
