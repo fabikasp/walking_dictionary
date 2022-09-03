@@ -11,7 +11,7 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
 
   useEffect(() => {
     if (participants.length == 0) { /* redirect to home after browser refresh */
-      //navigate("/");
+      navigate("/");
     }
   }, []);
 

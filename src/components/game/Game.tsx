@@ -17,7 +17,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
 
   useEffect(() => {
     if (participants.length == 0) { /* redirect to home after browser refresh */
-      //navigate("/");
+      navigate("/");
     }
 
     if (timer != null) {
@@ -59,8 +59,8 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   };
 
   const handleSubmit = () => {
-    if (currentWord == "") {
-      setErrorMessage("Mindestens ein Buchstabe notwendig");
+    if (currentWord.length <= 1) {
+      setErrorMessage("Mindestens zwei Buchstaben notwendig");
 
       return;
     }
@@ -93,6 +93,12 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
     setWords([...words, currentWord.toLowerCase()]);
   };
 
+  const handleKeyDown = (event: any) => {
+    if (event.key == "Enter") {
+      handleSubmit();
+    }
+  };
+
   const handleRestart = () => {
     resetGame();
 
@@ -111,7 +117,15 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
         <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
         <div id="game-current-participant-headline">du bist dran!</div>
         {timer != null && <div id="game-timer">{timerIcon} {seconds}</div>}
-        <input id="game-word-input" type="text" placeholder="Wort" value={currentWord} onChange={event => validateAndSetCurrentWord(event.target.value)} ref={input => input && input.focus()} />
+        <input 
+          id="game-word-input" 
+          type="text" 
+          placeholder="Wort" 
+          value={currentWord} 
+          onChange={event => validateAndSetCurrentWord(event.target.value)} 
+          onKeyDown={handleKeyDown}
+          ref={input => input && input.focus()} 
+        />
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
         <button id="game-words-button" onClick={() => setShowWords(!showWords)}>Wörter {showWords ? "ausblenden" : "anzeigen"}</button>

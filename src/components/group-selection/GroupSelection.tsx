@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Participant } from "./Participant";
 import { GroupSelectionProps } from "./types";
@@ -27,6 +27,12 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
     setCurrentParticipant("");
   };
 
+  const handleKeyDown = (event: any) => {
+    if (event.key == "Enter") {
+      validateAndAddParticipant();
+    }
+  };
+
   const handleContinue = () => {
     if (participants.length == 0) {
       setErrorMessage("Mindestens ein Teilnehmer notwendig");
@@ -41,7 +47,15 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
     <div id="group-selection">
       <div id="group-selection-body">
         <p id="group-selection-headline">Teilnehmer festlegen</p>
-        <input id="group-selection-input" type="text" placeholder="Teilnehmer" value={currentParticipant} onChange={event => setCurrentParticipant(event.target.value)} ref={input => input && input.focus()} />
+        <input 
+          id="group-selection-input" 
+          type="text" 
+          placeholder="Teilnehmer" 
+          value={currentParticipant} 
+          onChange={event => setCurrentParticipant(event.target.value)}
+          onKeyDown={handleKeyDown}
+          ref={input => input && input.focus()}
+        />
         <div id="group-selection-error">{errorMessage}</div>
         <div id="group-selection-participants">
           {participants.map((participant, index) => <Participant key={index} participant={participant} deleteParticipant={() => deleteParticipant(index)} />)}
