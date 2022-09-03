@@ -8,6 +8,8 @@ import "./App.css";
 export const App = () => {
   const [participants, setParticipants] = useState<string[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("A");
+  const [timer, setTimer] = useState<number | null>(null);
+  const [verifyWords, setVerifyWords] = useState(true);
 
   const addParticipant = (participant: string) => {
     setParticipants([...participants, participant]);
@@ -24,7 +26,9 @@ export const App = () => {
         <Routes>
             <Route index element={<Home />} />
             <Route path="group-selection" element={<GroupSelection participants={participants} addParticipant={addParticipant} deleteParticipant={deleteParticipant} />} />
-            <Route path="game-settings" element={<GameSettings selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} />} />
+            <Route path="game-settings" element={
+              <GameSettings selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} timer={timer} setTimer={setTimer} verifyWords={verifyWords} setVerifyWords={setVerifyWords} />
+            } />
         </Routes>
     </BrowserRouter>
   );

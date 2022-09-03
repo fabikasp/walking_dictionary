@@ -17,6 +17,18 @@
 
 #game-settings-letter-headline {
     font-size: 20px;
+    margin-bottom: 5px;
+}
+
+#game-settings-timer-headline {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+#game-settings-verify-word-headline {
+    font-size: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .game-settings-letter-container {
@@ -32,6 +44,23 @@
     font-size: 18px;
     margin: 10px 5px 0px 5px;
     padding: 5px;
+}
+
+#game-settings-timer-input {
+    font-size: 18px;
+    text-align: center;
+    border-color: #008080;
+    outline-color: #008080;
+    width: 40%;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+#game-settings-verify-words-checkbox {
+    display: block;
+    color: #E0FFFF;
+    height: 15px;
+    width: 15px;
 }
 
 #game-settings-letter-random-button {

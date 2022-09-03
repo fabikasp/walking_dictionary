@@ -44,5 +44,9 @@ export type LetterContainerProps = {
 
 export type GameSettingsProps = {
     selectedLetter: string,
-    setSelectedLetter: (letter: string) => void
+    setSelectedLetter: (letter: string) => void,
+    timer: number | null,
+    setTimer: (timer: number| null) => void,
+    verifyWords: boolean,
+    setVerifyWords: (verifyWords: boolean) => void
 };

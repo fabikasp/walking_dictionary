@@ -5,8 +5,7 @@ import { LetterContainer } from "./LetterContainer";
 import { GameSettingsProps } from "./types";
 import "./GameSettings.css";
 
-export const GameSettings = ({selectedLetter, setSelectedLetter}: GameSettingsProps) => {
-  const [errorMessage, setErrorMessage] = useState("");
+export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer, verifyWords, setVerifyWords}: GameSettingsProps) => {
   const navigate = useNavigate();
   let letterGroups: string[][] = [];
 
@@ -28,16 +27,33 @@ export const GameSettings = ({selectedLetter, setSelectedLetter}: GameSettingsPr
     setSelectedLetter(letters[randomLetterIndex]);
   };
 
+  const validateAndSetTimer = (timer: string) => {
+    const timerAsNumber: number = Number(timer);
+
+    if (timerAsNumber == 0) {
+      setTimer(null);
+
+      return;
+    }
+    
+    if (!Number.isNaN(timerAsNumber)) {
+      setTimer(timerAsNumber);
+    }
+  };
+
   return (
     <div id="game-settings">
       <div id="game-settings-body">
         <p id="game-settings-headline">Spieleinstellungen</p>
-        <p id="game-settings-letter-headline">Buchstabe auswählen</p>
+        <div id="game-settings-letter-headline">Buchstabe auswählen</div>
         <div>
           {letterGroups.map((letterGroup: string[], index: number) => <LetterContainer key={index} letters={letterGroup} selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} />)}
         </div>
-        <div id="game-settings-error">{errorMessage}</div>
         <button id="game-settings-letter-random-button" onClick={selectRandomLetter}>Zufällig</button>
+        <div id="game-settings-timer-headline">Timer</div>
+        <input id="game-settings-timer-input" type="text" placeholder="Timer in sec" value={timer ?? ""} onChange={event => validateAndSetTimer(event.target.value)} />
+        <div id="game-settings-verify-word-headline">Wortüberprüfung</div>
+        <input id="game-settings-verify-words-checkbox" type="checkbox" defaultChecked={verifyWords} onChange={() => setVerifyWords(!verifyWords)}  />
         <button id="game-settings-continue-button" onClick={() => navigate("/play")}>Fortfahren</button>
       </div>
     </div>
