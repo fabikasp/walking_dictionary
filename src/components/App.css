@@ -1,8 +1,11 @@
 html, body {
     background: linear-gradient(32deg, #40E0D0 0%, #48D1CC 50%, #00CED1 100%);
-    font-family: "Copperplate Gothic Light";
     width: 100%;
     height: 100%;
+}
+
+* {
+    font-family: "Copperplate Gothic Light";
 }
 
 @media screen and (min-width: 576px) {
@@ -12,7 +15,6 @@ html, body {
 }
 
 button {
-    font-family: "Copperplate Gothic Light";
     font-weight: bold;
     background-color: #E0FFFF;
     border-color: #008080;

@@ -16,7 +16,6 @@
 }
 
 #group-selection-input {
-    font-family: "Copperplate Gothic Light";
     font-size: 25px;
     text-align: center;
     border-color: #008080;
@@ -38,7 +37,7 @@
     border: 1px solid #008080;
     border-radius: 5px;
     font-size: 18px;
-    margin-top: 18px;
+    margin-top: 10px;
     padding: 5px;
 }
 
