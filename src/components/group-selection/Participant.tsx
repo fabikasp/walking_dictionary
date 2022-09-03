@@ -1,10 +1,6 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-
-type ParticipantProps = {
-    participant: string,
-    deleteParticipant: () => void
-};
+import { ParticipantProps } from "./types";
  
 export const Participant = ({participant, deleteParticipant}: ParticipantProps) => {
   return (

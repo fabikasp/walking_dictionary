@@ -1,0 +1,47 @@
+#game-settings {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-settings-body {
+    text-align: center;
+    justify-content: center;
+}
+
+#game-settings-headline {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#game-settings-letter-headline {
+    font-size: 20px;
+}
+
+.game-settings-letter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.game-settings-letter {
+    width: 15px;
+    background-color: white;
+    border: 1px solid #008080;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px 5px 0px 5px;
+    padding: 5px;
+}
+
+#game-settings-letter-random-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
+#game-settings-continue-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}

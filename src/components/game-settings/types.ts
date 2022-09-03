@@ -29,3 +29,11 @@ export const letters: string[] = [
     "Ö",
     "Ü"
 ];
+
+export type LetterProps = {
+    letter: string
+};
+
+export type LetterContainerProps = {
+    letters: string[]
+};

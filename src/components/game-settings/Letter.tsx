@@ -1,12 +1,9 @@
 import React from "react";
-
-type LetterProps = {
-    letter: string
-};
+import { LetterProps } from "./types";
 
 export const Letter = ({letter}: LetterProps) => {  
     return (
-        <div className="letter-selection-letter">
+        <div className="game-settings-letter">
             <span>{letter}</span>
         </div>
     );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { GroupSelection } from "./group-selection/GroupSelection";
-import { LetterSelection } from "./letter-selection/LetterSelection";
+import { GameSettings } from "./game-settings/GameSettings";
 import "./App.css";
  
 export const App = () => {
@@ -24,7 +24,7 @@ export const App = () => {
         <Routes>
             <Route index element={<Home />} />
             <Route path="group-selection" element={<GroupSelection participants={participants} addParticipant={addParticipant} deleteParticipant={deleteParticipant} />} />
-            <Route path="letter-selection" element={<LetterSelection />} />
+            <Route path="game-settings" element={<GameSettings />} />
         </Routes>
     </BrowserRouter>
   );

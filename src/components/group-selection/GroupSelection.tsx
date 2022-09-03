@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Participant } from "./Participant";
+import { GroupSelectionProps } from "./types";
 import "./GroupSelection.css";
- 
-type GroupSelectionProps = {
-  participants: string[],
-  addParticipant: (participant: string) => void,
-  deleteParticipant: (index: number) => void
-};
 
 export const GroupSelection = ({participants, addParticipant, deleteParticipant}: GroupSelectionProps) => {
   const [currentParticipant, setCurrentParticipant] = useState("");
@@ -16,13 +11,13 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
 
   const validateAndAddParticipant = () => {
     if (currentParticipant == "") {
-      setErrorMessage("Mindestens ein Buchstabe notwendig.");
+      setErrorMessage("Mindestens ein Buchstabe notwendig");
 
       return;
     }
 
     if (currentParticipant.length > 30) {
-      setErrorMessage("Maximal 30 Buchstaben erlaubt.");
+      setErrorMessage("Maximal 30 Buchstaben erlaubt");
 
       return;
     }
@@ -30,6 +25,16 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
     setErrorMessage("");
     addParticipant(currentParticipant);
     setCurrentParticipant("");
+  };
+
+  const handleContinue = () => {
+    if (participants.length == 0) {
+      setErrorMessage("Mindestens ein Teilnehmer notwendig");
+
+      return;
+    }
+
+    navigate("/game-settings")
   };
 
   return (
@@ -42,7 +47,7 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
           {participants.map((participant, index) => <Participant key={index} participant={participant} deleteParticipant={() => deleteParticipant(index)} />)}
         </div>
         <button id="group-selection-add-button" onClick={validateAndAddParticipant}>Hinzufügen</button>
-        <button id="group-selection-continue-button" onClick={() => navigate("/letter-selection")}>Fortfahren</button>
+        <button id="group-selection-continue-button" onClick={handleContinue}>Fortfahren</button>
       </div>
     </div>
   );
