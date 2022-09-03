@@ -53,7 +53,9 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
         <div id="game-settings-timer-headline">Timer</div>
         <input id="game-settings-timer-input" type="text" placeholder="Timer in sec" value={timer ?? ""} onChange={event => validateAndSetTimer(event.target.value)} />
         <div id="game-settings-verify-word-headline">Wortüberprüfung</div>
-        <input id="game-settings-verify-words-checkbox" type="checkbox" defaultChecked={verifyWords} onChange={() => setVerifyWords(!verifyWords)}  />
+        <div id="game-settings-verify-words-checkbox-container">
+          <input id="game-settings-verify-words-checkbox" type="checkbox" defaultChecked={verifyWords} onChange={() => setVerifyWords(!verifyWords)} />
+        </div>
         <button id="game-settings-continue-button" onClick={() => navigate("/play")}>Fortfahren</button>
       </div>
     </div>

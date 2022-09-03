@@ -56,11 +56,17 @@
     padding: 5px;
 }
 
+#game-settings-verify-words-checkbox-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #game-settings-verify-words-checkbox {
+    transform: scale(2);
+    accent-color: #E0FFFF;
     display: block;
-    color: #E0FFFF;
-    height: 15px;
-    width: 15px;
+    margin-top: 15px;
 }
 
 #game-settings-letter-random-button {
