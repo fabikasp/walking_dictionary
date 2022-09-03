@@ -31,9 +31,18 @@ export const letters: string[] = [
 ];
 
 export type LetterProps = {
-    letter: string
+    letter: string,
+    selected: boolean,
+    setSelected: () => void
 };
 
 export type LetterContainerProps = {
-    letters: string[]
+    letters: string[],
+    selectedLetter: string,
+    setSelectedLetter: (letter: string) => void
+};
+
+export type GameSettingsProps = {
+    selectedLetter: string,
+    setSelectedLetter: (letter: string) => void
 };

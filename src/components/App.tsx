@@ -7,7 +7,7 @@ import "./App.css";
  
 export const App = () => {
   const [participants, setParticipants] = useState<string[]>([]);
-  const [letter, setLetter] = useState("");
+  const [selectedLetter, setSelectedLetter] = useState("A");
 
   const addParticipant = (participant: string) => {
     setParticipants([...participants, participant]);
@@ -24,7 +24,7 @@ export const App = () => {
         <Routes>
             <Route index element={<Home />} />
             <Route path="group-selection" element={<GroupSelection participants={participants} addParticipant={addParticipant} deleteParticipant={deleteParticipant} />} />
-            <Route path="game-settings" element={<GameSettings />} />
+            <Route path="game-settings" element={<GameSettings selectedLetter={selectedLetter} setSelectedLetter={setSelectedLetter} />} />
         </Routes>
     </BrowserRouter>
   );
