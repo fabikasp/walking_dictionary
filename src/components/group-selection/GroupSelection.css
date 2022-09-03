@@ -45,6 +45,7 @@
 .group-selection-delete-icon {
     display: inline-flex;
     vertical-align: top;
+    padding-top: 1.5px;
 }
 
 #group-selection-add-button {

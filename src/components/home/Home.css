@@ -1,0 +1,25 @@
+#home {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#home-body {
+    text-align: center;
+}
+
+#home-headline {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#home-description {
+    font-size: 20px;
+}
+
+#home-start-button {
+    width: 90%;
+    font-size: 25px;
+    margin-top: 18px;
+}
