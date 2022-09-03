@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.game-headline {
+#game-headline {
     font-size: 32px;
     font-weight: bold;
 }

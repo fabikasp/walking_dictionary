@@ -112,8 +112,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
   return (
     <div id="game">
       <div id="game-body">
-        <div className="game-headline">Finde Wörter mit dem</div>
-        <div className="game-headline">Anfangsbuchstaben {letter}</div>
+        <p id="game-headline">Finde Wörter mit dem<br/>Anfangsbuchstaben {letter}</p>
         <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
         <div id="game-current-participant-headline">du bist dran!</div>
         {timer != null && <div id="game-timer">{timerIcon} {seconds}</div>}
@@ -130,7 +129,7 @@ export const Game = ({letter, participants, timer, resetGame}: GameProps) => {
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
         <button id="game-words-button" onClick={() => setShowWords(!showWords)}>Wörter {showWords ? "ausblenden" : "anzeigen"}</button>
         <div id="game-words">
-          {showWords && words.map((word: string) => <Word word={word} />)}
+          {showWords && words.map((word: string, index: number) => <Word key={index} word={word} />)}
         </div>
         <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
       </div>
