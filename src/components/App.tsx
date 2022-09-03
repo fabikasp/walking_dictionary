@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./home/Home";
 import { GroupSelection } from "./group-selection/GroupSelection";
+import { LetterSelection } from "./letter-selection/LetterSelection";
 import "./App.css";
  
 export const App = () => {
   const [participants, setParticipants] = useState<string[]>([]);
+  const [letter, setLetter] = useState("");
 
   const addParticipant = (participant: string) => {
     setParticipants([...participants, participant]);
@@ -22,6 +24,7 @@ export const App = () => {
         <Routes>
             <Route index element={<Home />} />
             <Route path="group-selection" element={<GroupSelection participants={participants} addParticipant={addParticipant} deleteParticipant={deleteParticipant} />} />
+            <Route path="letter-selection" element={<LetterSelection />} />
         </Routes>
     </BrowserRouter>
   );
