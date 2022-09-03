@@ -46,7 +46,8 @@ export type GameSettingsProps = {
     selectedLetter: string,
     setSelectedLetter: (letter: string) => void,
     timer: number | null,
-    setTimer: (timer: number| null) => void,
+    setTimer: (timer: number | null) => void,
     verifyWords: boolean,
-    setVerifyWords: (verifyWords: boolean) => void
+    setVerifyWords: (verifyWords: boolean) => void,
+    participants: string[]
 };

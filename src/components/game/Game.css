@@ -1,0 +1,53 @@
+#game {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-body {
+    text-align: center;
+    justify-content: center;
+}
+
+.game-headline {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#game-current-participant-headline {
+    font-size: 22px;
+}
+
+#game-current-participant-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#game-word-input {
+    font-size: 25px;
+    text-align: center;
+    border-color: #008080;
+    outline-color: #008080;
+    width: 90%;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+#game-submit-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
+#game-words-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
+#game-restart-button {
+    width: 90%;
+    font-size: 18px;
+    margin-top: 18px;
+}
