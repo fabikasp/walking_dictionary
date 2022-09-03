@@ -7,6 +7,7 @@ export const Game = ({letter, participants, timer}: GameProps) => {
   const [currentParticipantIndex, setCurrentParticipantIndex] = useState(0);
   const [words, setWords] = useState<string[]>([]);
   const [currentWord, setCurrentWord] = useState("");
+  const [seconds, setSeconds] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -14,7 +15,31 @@ export const Game = ({letter, participants, timer}: GameProps) => {
     if (participants.length == 0) { /* redirect to home after browser refresh */
       //navigate("/");
     }
+
+    if (timer != null) {
+      setSeconds(timer);
+    }
   }, []);
+
+  useEffect(() => {
+    if (timer != null) {
+      const interval = setInterval(() => {
+        setSeconds(seconds => seconds - 1);
+      }, 1000);
+
+      if (seconds <= 0) {
+        setSeconds(timer);
+
+        if (currentParticipantIndex < participants.length - 1) {
+          setCurrentParticipantIndex(currentParticipantIndex => currentParticipantIndex + 1);
+        } else {
+          setCurrentParticipantIndex(0);
+        }
+      }
+  
+      return () => clearInterval(interval);
+    }
+  }, [seconds]);
 
   const validateAndSetCurrentWord = (word: string) => {
     const wordRegex = /^$|[a-zA-Z]/g;
@@ -38,6 +63,17 @@ export const Game = ({letter, participants, timer}: GameProps) => {
 
     setCurrentWord("");
     setErrorMessage("");
+
+    if (timer != null) {
+      setSeconds(timer);
+    }
+
+    if (currentParticipantIndex < participants.length - 1) {
+      setCurrentParticipantIndex(currentParticipantIndex => currentParticipantIndex + 1);
+    } else {
+      setCurrentParticipantIndex(0);
+    }
+
     setWords([...words, currentWord.toLowerCase()]);
   };
 
@@ -46,7 +82,9 @@ export const Game = ({letter, participants, timer}: GameProps) => {
       <div id="game-body">
         <div className="game-headline">Finde Wörter mit dem</div>
         <div className="game-headline">Anfangsbuchstaben {letter}</div>
-        <p id="game-current-participant-headline"><span id="game-current-participant-name">{participants[currentParticipantIndex]}</span>, du bist dran!</p>
+        <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
+        <div id="game-current-participant-headline">du bist dran!</div>
+        {timer != null && <div id="game-timer">{seconds}</div>}
         <input id="game-word-input" type="text" placeholder="Wort" value={currentWord} onChange={event => validateAndSetCurrentWord(event.target.value)} />
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>

@@ -15,13 +15,21 @@
     font-weight: bold;
 }
 
-#game-current-participant-headline {
-    font-size: 22px;
-}
-
 #game-current-participant-name {
     font-size: 22px;
     font-weight: bold;
+    margin-top: 10px;
+}
+
+#game-current-participant-headline {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+#game-timer {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #game-word-input {
