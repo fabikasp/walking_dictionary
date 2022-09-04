@@ -10,3 +10,10 @@ export type GameProps = {
 export type WordProps = {
     word: string
 };
+
+export type ScoreProps = {
+    score: {
+        participant: string,
+        score: number
+    }
+};

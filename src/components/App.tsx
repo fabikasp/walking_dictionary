@@ -11,7 +11,7 @@ export const App = () => {
   const [participants, setParticipants] = useState<string[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("A");
   const [timer, setTimer] = useState<number | null>(null);
-  const [verifyWords, setVerifyWords] = useState(true);
+  const [verifyWords, setVerifyWords] = useState(false);
   const [availableWords, setAvailableWords] = useState<string[]>([]);
 
   useEffect(() => {

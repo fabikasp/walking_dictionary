@@ -49,7 +49,14 @@
 }
 
 #game-words-button {
-    width: 90%;
+    width: 44%;
+    font-size: 16px;
+    margin-top: 18px;
+    margin-right: 8px;
+}
+
+#game-score-button {
+    width: 44%;
     font-size: 16px;
     margin-top: 18px;
 }
@@ -65,11 +72,7 @@
     vertical-align: top;
 }
 
-#game-words-modal {
-    width: 80%;
-}
-
-#game-words {
+#game-evaluation {
     display: flex;
     flex-direction: column;
     align-items: center;
