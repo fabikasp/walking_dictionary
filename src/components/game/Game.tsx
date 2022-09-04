@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GameProps } from "./types";
+import { GameProps, Scores } from "./types";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import { Word } from "./Word";
 import { Score } from "./Score";
@@ -13,6 +13,7 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
   const [seconds, setSeconds] = useState(0);
   const [timerActive, setTimerActive] = useState(true);
   const [showWords, setShowWords] = useState(false);
+  const [scores, setScores] = useState<Scores>({});
   const [showScore, setShowScore] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -25,6 +26,10 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
     if (timer != null) {
       setSeconds(timer);
     }
+
+    participants.forEach((participant) => {
+      scores[participant] = {participant: participant, score: 0};
+    });
   }, []);
 
   useEffect(() => {
@@ -87,6 +92,10 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
       return;
     }
 
+    let newScores: Scores = scores;
+    newScores[participants[currentParticipantIndex]].score++;
+    setScores(newScores);
+
     setCurrentWord("");
     setErrorMessage("");
 
@@ -115,9 +124,24 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
     navigate("/group-selection");
   };
 
+  const toggleShowWords = () => {
+    setShowScore(false);
+    setShowWords(!showWords);
+  };
+
+  const toggleShowScore = () => {
+    setShowWords(false);
+    setShowScore(!showScore);
+  };
+
   const timerIcon = timerActive
     ? <MdPause id="game-pause-icon" onClick={() => setTimerActive(false)} />
     : <MdPlayArrow id="game-play-icon" onClick={() => setTimerActive(true)} />;
+
+  let scoreNodes: any = [];
+  Object.keys(scores).forEach((participant: string, index: number) => {
+    scoreNodes.push(<Score key={index} score={scores[participant]} />);
+  });
 
   return (
     <div id="game">
@@ -138,11 +162,16 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
         <div id="game-error">{errorMessage}</div>
         <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
         <div>
-          <button id="game-words-button" onClick={() => setShowWords(!showWords)}>Wörter {showWords ? "aus" : "ein"}</button>
-          <button id="game-score-button" onClick={() => setShowScore(!showScore)}>Score {showScore ? "aus" : "ein"}</button>
+          <button id="game-words-button" onClick={toggleShowWords}>Wörter {showWords ? "aus" : "ein"}</button>
+          <button id="game-score-button" onClick={toggleShowScore}>Score {showScore ? "aus" : "ein"}</button>
         </div>
         <div id="game-evaluation">
-          {showWords && mentionedWords.map((word: string, index: number) => <Word key={index} word={word} />)}
+          <div>
+            {showWords && mentionedWords.map((word: string, index: number) => <Word key={index} word={word} />)}
+          </div>
+          <div>
+            {showScore && scoreNodes}
+          </div>
         </div>
         <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
       </div>

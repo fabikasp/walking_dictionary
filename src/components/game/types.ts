@@ -7,6 +7,13 @@ export type GameProps = {
     availableWords: string[]
 };
 
+export type Scores = {
+    [participant: string]: {
+        participant: string,
+        score: number
+    }
+};
+
 export type WordProps = {
     word: string
 };

@@ -22,6 +22,12 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
       return;
     }
 
+    if (participants.includes(currentParticipant)) {
+      setErrorMessage("Teilnehmer existiert bereits");
+
+      return;
+    }
+
     setErrorMessage("");
     addParticipant(currentParticipant);
     setCurrentParticipant("");
