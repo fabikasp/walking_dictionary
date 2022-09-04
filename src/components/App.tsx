@@ -15,7 +15,7 @@ export const App = () => {
   const [availableWords, setAvailableWords] = useState<string[]>([]);
 
   useEffect(() => {
-    const lowerCaseGermanWords = GERMAN_WORDS.filter((germanWord: string) => germanWord.toLowerCase());
+    const lowerCaseGermanWords = GERMAN_WORDS.map((germanWord: string) => germanWord.toLowerCase());
     setAvailableWords(lowerCaseGermanWords);
   }, []);
 

@@ -66,27 +66,26 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
   };
 
   const handleSubmit = () => {
-    const lowerCaseWord = currentWord.toLowerCase();
-
-    if (lowerCaseWord.length <= 1) {
+    if (currentWord.length <= 1) {
       setErrorMessage("Mindestens zwei Buchstaben notwendig");
 
       return;
     }
 
-    if (lowerCaseWord.charAt(0) != letter.toLowerCase()) {
+    if (currentWord.toLowerCase().charAt(0) != letter.toLowerCase()) {
       setErrorMessage("Wort muss mit " + letter + " anfangen");
 
       return;
     }
 
-    if (mentionedWords.includes(lowerCaseWord)) {
+    const lowerCaseMentionedWords = mentionedWords.map((mentionedWord: string) => mentionedWord.toLowerCase());
+    if (lowerCaseMentionedWords.includes(currentWord.toLowerCase())) {
       setErrorMessage("Wort wurde bereits genannt");
 
       return;
     }
 
-    if (verifyWords && !availableWords.includes(lowerCaseWord)) {
+    if (verifyWords && !availableWords.includes(currentWord.toLowerCase())) {
       setErrorMessage("Wort wurde nicht gefunden");
 
       return;
@@ -109,7 +108,7 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
       setCurrentParticipantIndex(0);
     }
 
-    setMentionedWords([...mentionedWords, lowerCaseWord]);
+    setMentionedWords([...mentionedWords, currentWord]);
   };
 
   const handleKeyDown = (event: any) => {
