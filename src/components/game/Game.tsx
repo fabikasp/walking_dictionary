@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GameProps, Scores } from "./types";
-import { MdPause, MdPlayArrow } from "react-icons/md";
+import { MdPause, MdPlayArrow, MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { Word } from "./Word";
 import { Score } from "./Score";
 import "./Game.css";
@@ -20,7 +20,7 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
 
   useEffect(() => {
     if (participants.length == 0) { /* redirect to home after browser refresh */
-      //navigate("/");
+      navigate("/");
     }
 
     if (timer != null) {
@@ -159,20 +159,20 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
           ref={input => input && input.focus()} 
         />
         <div id="game-error">{errorMessage}</div>
-        <button id="game-submit-button" onClick={handleSubmit}>Fertig</button>
+        <button id="game-submit-button" onClick={handleSubmit}>FERTIG</button>
         <div>
-          <button id="game-words-button" onClick={toggleShowWords}>Wörter {showWords ? "aus" : "ein"}</button>
-          <button id="game-score-button" onClick={toggleShowScore}>Score {showScore ? "aus" : "ein"}</button>
+          <button id="game-words-button" onClick={toggleShowWords}>WÖRTER {showWords ? "AUS" : "EIN"}</button>
+          <button id="game-score-button" onClick={toggleShowScore}>SCORE {showScore ? "AUS" : "EIN"}</button>
         </div>
-        <div id="game-evaluation">
-          <div>
+        <div>
+          <div className="game-evaluation-container">
             {showWords && mentionedWords.map((word: string, index: number) => <Word key={index} word={word} />)}
           </div>
-          <div>
+          <div className="game-evaluation-container">
             {showScore && scoreNodes}
           </div>
         </div>
-        <button id="game-restart-button" onClick={handleRestart}>Neustart</button>
+        <button id="game-restart-button" onClick={handleRestart}>NEUSTART</button>
       </div>
     </div>
   );

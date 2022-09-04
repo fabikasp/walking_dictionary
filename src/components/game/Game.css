@@ -72,7 +72,7 @@
     vertical-align: top;
 }
 
-#game-evaluation {
+.game-evaluation-container {
     display: flex;
     flex-direction: column;
     align-items: center;

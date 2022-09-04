@@ -66,8 +66,8 @@ export const GroupSelection = ({participants, addParticipant, deleteParticipant}
         <div id="group-selection-participants">
           {participants.map((participant, index) => <Participant key={index} participant={participant} deleteParticipant={() => deleteParticipant(index)} />)}
         </div>
-        <button id="group-selection-add-button" onClick={validateAndAddParticipant}>Hinzufügen</button>
-        <button id="group-selection-continue-button" onClick={handleContinue}>Fortfahren</button>
+        <button id="group-selection-add-button" onClick={validateAndAddParticipant}>HINZUFÜGEN</button>
+        <button id="group-selection-continue-button" onClick={handleContinue}>FORTFAHREN</button>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ export const Home = () => {
       <div id="home-body">
         <p id="home-headline">Wandelndes Wörterbuch</p>
         <p id="home-description">Finde Wörter mit dem Anfangsbuchstaben!</p>
-        <button id="home-start-button" onClick={() => navigate("/group-selection")}>Start</button>
+        <button id="home-start-button" onClick={() => navigate("/group-selection")}>START</button>
       </div>
     </div>
   );
