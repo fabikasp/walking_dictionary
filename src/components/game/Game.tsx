@@ -148,7 +148,10 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
         <p id="game-headline">Finde Wörter mit dem<br/>Anfangsbuchstaben {letter}</p>
         <div id="game-current-participant-name">{participants[currentParticipantIndex]},</div>
         <div id="game-current-participant-headline">du bist dran!</div>
-        {timer != null && <div id="game-timer">{timerIcon} {seconds}</div>}
+        {timer != null && <div id="game-timer">
+          <div>{timerIcon}</div>
+          <div>{seconds}</div>
+        </div>}
         <input 
           id="game-word-input" 
           type="text" 
