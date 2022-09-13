@@ -73,9 +73,16 @@
 #game-pause-icon, #game-play-icon {
     display: inline-flex;
     vertical-align: top;
-    padding-top: 4px;
+    padding-top: 8%;
     margin-right: 4px;
 }
+
+@media screen and (min-width: 576px) {
+    #game-pause-icon, #game-play-icon {
+        padding-top: 14%;
+    }
+}
+
 
 .game-evaluation-container {
     display: flex;
