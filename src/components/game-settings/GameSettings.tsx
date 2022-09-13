@@ -26,8 +26,8 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
   }
 
   const selectRandomLetter = () => {
-    const min = 1;
-    const max = 29;
+    const min = 0;
+    const max = 28;
     const randomLetterIndex = Math.floor(Math.random() * (max - min + 1) + min);
 
     setSelectedLetter(LETTERS[randomLetterIndex]);
