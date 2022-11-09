@@ -4,7 +4,7 @@ Website zum spielerischen Finden von Wörtern mit einem gewissen Anfangsbuchstab
 
 Steht unter <a href="https://walking-dictionary.000webhostapp.com">https://walking-dictionary.000webhostapp.com</a> zur Verfügung.
 
-## Genutzte Software
+## Verwendete Software
 
 <table>
   <tr>
