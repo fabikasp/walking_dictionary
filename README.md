@@ -4,6 +4,12 @@ Website zum spielerischen Finden von Wörtern mit einem gewissen Anfangsbuchstab
 
 Steht unter <a href="https://walking-dictionary.000webhostapp.com">https://walking-dictionary.000webhostapp.com</a> zur Verfügung.
 
+## Ausführung
+
+1. `npm install` im geklonten Repository ausführen
+2. `npm start` im geklonten Repository ausführen
+3. [http://localhost:1234](http://localhost:1234) in einem Browser aufrufen
+
 ## Verwendete Software
 
 <table>
