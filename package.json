@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fabikasp/walking_dictionary.git"
+    "url": "https://github.com/fabikasp/walking_dictionary.git"
   },
   "author": "Fabian Kasparek",
   "license": "GNU General Public License 3",
