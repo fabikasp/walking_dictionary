@@ -59,7 +59,7 @@ export const Game = ({letter, participants, timer, resetGame, verifyWords, avail
   }, [seconds, timerActive]);
 
   const validateAndSetCurrentWord = (word: string) => {
-    const wordRegex = /^$|[a-zA-Z]/g;
+    const wordRegex = /^$|[a-zA-ZÄäÖöÜüß]/g;
     if (wordRegex.test(word)) {
       setCurrentWord(word);
     }

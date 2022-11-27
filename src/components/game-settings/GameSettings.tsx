@@ -43,8 +43,6 @@ export const GameSettings = ({selectedLetter, setSelectedLetter, timer, setTimer
     timerAsNumber = Math.floor(timerAsNumber);
 
     if (timerAsNumber == 0) {
-      setTimer(null);
-
       return;
     }
 
