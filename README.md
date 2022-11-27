@@ -10,6 +10,8 @@ Steht unter <a href="https://walking-dictionary.000webhostapp.com">https://walki
 2. `npm start` im geklonten Repository ausführen
 3. [http://localhost:1234](http://localhost:1234) in einem Browser aufrufen
 
+oder [index.html](./dist/index.html) aufrufen
+
 ## Verwendete Software
 
 <table>
